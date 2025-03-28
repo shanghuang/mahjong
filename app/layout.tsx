@@ -5,7 +5,7 @@ import Nav from './components/Nav';
 import { SessionProvider } from './components/Session';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from './lib/messages';
-//import { SocketProvider } from './components/SocketProvider';
+import { SocketProvider } from './components/SocketProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,8 +35,10 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SessionProvider>
+            <SocketProvider>
               <Nav />
               {children}
+            </SocketProvider>
           </SessionProvider>
         </NextIntlClientProvider>
       </body>
